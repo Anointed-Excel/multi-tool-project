@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Tool Project Instructions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --purple: #6c5ce7;
+            --green: #00b894;
+            --blue: #0984e3;
+            --red: #d63031;
+            --yellow: #fdcb6e;
+            --navy-dark: #0a1628;
+            --navy: #1a2744;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .badge-orange {
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .student-nav {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 180px;
+            z-index: 999;
+        }
+
+        .student-nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .student-nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn-1 {
+            color: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .nav-btn-1:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        .nav-btn-2 {
+            color: var(--green);
+            border-color: var(--green);
+        }
+
+        .nav-btn-2:hover {
+            background: var(--green);
+            color: white;
+        }
+
+        .nav-btn-3 {
+            color: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .nav-btn-3:hover {
+            background: var(--blue);
+            color: white;
+        }
+
+        .nav-btn-4 {
+            color: var(--red);
+            border-color: var(--red);
+        }
+
+        .nav-btn-4:hover {
+            background: var(--red);
+            color: white;
+        }
+
+        .nav-btn-5 {
+            color: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        .nav-btn-5:hover {
+            background: var(--yellow);
+            color: white;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            display: inline-block;
+        }
+
+        .general-section {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 60px;
+            scroll-margin-top: 200px;
+        }
+
+        .student-header {
+            padding: 30px;
+            color: white;
+            position: relative;
+        }
+
+        .student-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .student1 .student-header {
+            background: linear-gradient(135deg, var(--purple) 0%, #a29bfe 100%);
+        }
+
+        .student2 .student-header {
+            background: linear-gradient(135deg, var(--green) 0%, #55efc4 100%);
+        }
+
+        .student3 .student-header {
+            background: linear-gradient(135deg, var(--blue) 0%, #74b9ff 100%);
+        }
+
+        .student4 .student-header {
+            background: linear-gradient(135deg, var(--red) 0%, #fab1a0 100%);
+        }
+
+        .student5 .student-header {
+            background: linear-gradient(135deg, var(--yellow) 0%, #ffeaa7 100%);
+        }
+
+        .student-body {
+            padding: 40px;
+        }
+
+        .port-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid;
+        }
+
+        .student1 .tool-box {
+            border-left-color: var(--purple);
+        }
+
+        .student2 .tool-box {
+            border-left-color: var(--green);
+        }
+
+        .student3 .tool-box {
+            border-left-color: var(--blue);
+        }
+
+        .student4 .tool-box {
+            border-left-color: var(--red);
+        }
+
+        .student5 .tool-box {
+            border-left-color: var(--yellow);
+        }
+
+        .tool-box h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .requirement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirement-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .requirement-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #51cf66;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-box i {
+            color: #ffc107;
+            font-size: 1.5rem;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .home-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .student-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <span class="badge-orange">
+                <i class="bi bi-code-square me-2"></i>GitHub Collaboration Project
+            </span>
+            <h1><i class="bi bi-book me-3"></i>Student Instructions</h1>
+            <p class="subtitle">Multi-Tool Website Project · 10 Tools · 5 Students</p>
+            <a href="landing-page/index.html" class="home-btn">
+                <i class="bi bi-arrow-left"></i> Back to Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Student Navigation -->
+    <div class="student-nav">
+        <div class="container text-center">
+            <p class="mb-3 fw-bold">Jump to Your Section:</p>
+            <a href="#student1" class="student-nav-btn nav-btn-1">1</a>
+            <a href="#student2" class="student-nav-btn nav-btn-2">2</a>
+            <a href="#student3" class="student-nav-btn nav-btn-3">3</a>
+            <a href="#student4" class="student-nav-btn nav-btn-4">4</a>
+            <a href="#student5" class="student-nav-btn nav-btn-5">5</a>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <!-- General Instructions -->
+        <div class="general-section">
+            <h2 class="section-title" style="border-bottom-color: #667eea; color: #667eea;">
+                <i class="bi bi-info-circle me-2"></i>General Instructions for Everyone
+            </h2>
+
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <h4><i class="bi bi-folder me-2 text-warning"></i>Project Structure</h4>
+                    <div class="code-box">
+                        multi-tool-project/<br>
+                        ├── student1-scraper/ (Port 3001)<br>
+                        ├── student2-ai/ (Port 3002)<br>
+                        ├── student3-storage/ (Port 3003)<br>
+                        ├── student4-interactive/ (Port 3004)<br>
+                        └── student5-text/ (Port 3005)
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4><i class="bi bi-terminal me-2 text-success"></i>Quick Setup</h4>
+                    <div class="code-box">
+                        cd multi-tool-project/studentX-xxx<br>
+                        npm init -y<br>
+                        npm install express cors dotenv<br>
+                        cp ../server-template.js server.js<br>
+                        node server.js
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box mt-4">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-lightbulb-fill"></i>
+                    <div>
+                        <h5 class="fw-bold mb-2">Important Notes</h5>
+                        <ul class="mb-0">
+                            <li>Each student works in their own folder (no conflicts!)</li>
+                            <li>Run your server on your assigned port (3001-3005)</li>
+                            <li>Use Bootstrap 5 for responsive design</li>
+                            <li>Never commit <code>.env</code> files or <code>node_modules/</code></li>
+                            <li>Test thoroughly before committing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 1 -->
+        <div class="student-card student1" id="student1">
+            <div class="student-header">
+                <div class="student-number">1</div>
+                <h2 class="mb-2">Student 1: Web Scraping & File Processing</h2>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3001
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">🌐</div>
+                            <h5>Tool 1: Web Scraper</h5>
+                            <p>Extract titles, headings, and links from any website</p>
+                            <p><strong>File:</strong> <code>public/scraper.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>URL input field</li>
+                                <li>Scrape button with loading state</li>
+                                <li>Display page title</li>
+                                <li>Show all h1-h6 headings</li>
+                                <li>List all links (href + text)</li>
+                                <li>Error handling for invalid URLs</li>
+                                <li>Export results as JSON</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Express</span>
+                                <span class="tech-badge">Cheerio</span>
+                                <span class="tech-badge">Axios</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">📱</div>
+                            <h5>Tool 2: QR Code Generator</h5>
+                            <p>Generate QR codes from text or URLs</p>
+                            <p><strong>File:</strong> <code>public/qrcode.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Text/URL input field</li>
+                                <li>Size selector (small, medium, large)</li>
+                                <li>Generate button</li>
+                                <li>Display QR code preview</li>
+                                <li>Download as PNG button</li>
+                                <li>Copy to clipboard option</li>
+                                <li>Error handling</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">qrcode</span>
+                                <span class="tech-badge">Canvas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npm install express cors dotenv cheerio axios qrcode
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>☐ Both tool HTML files created</li>
+                        <li>☐ Server routes implemented</li>
+                        <li>☐ Error handling working</li>
+                        <li>☐ Responsive design</li>
+                        <li>☐ Tested all features</li>
+                        <li>☐ README.md filled out</li>
+                        <li>☐ Code committed to GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 2 -->
+        <div class="student-card student2" id="student2">
+            <div class="student-header">
+                <div class="student-number">2</div>
+                <h2 class="mb-2">Student 2: AI & External APIs</h2>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3002
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">📚</div>
+                            <h5>Tool 3: AI Storybook Generator</h5>
+                            <p>Generate creative stories using Claude or OpenAI</p>
+                            <p><strong>File:</strong> <code>public/storybook.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Genre dropdown (Fantasy, Sci-Fi, Mystery, etc.)</li>
+                                <li>Character name input</li>
+                                <li>Setting description input</li>
+                                <li>Generate story button</li>
+                                <li>Display formatted story (200-500 words)</li>
+                                <li>Save to localStorage</li>
+                                <li>Story history viewer</li>
+                                <li>Loading animation during generation</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Anthropic API</span>
+                                <span class="tech-badge">OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">🌤️</div>
+                            <h5>Tool 4: Weather Dashboard</h5>
+                            <p>Real-time weather data from OpenWeatherMap</p>
+                            <p><strong>File:</strong> <code>public/weather.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>City search input</li>
+                                <li>Current weather display (temp, humidity, wind)</li>
+                                <li>Weather icon/animation</li>
+                                <li>5-day forecast cards</li>
+                                <li>Temperature unit toggle (°C/°F)</li>
+                                <li>Recent searches list</li>
+                                <li>Error handling for invalid cities</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">OpenWeather API</span>
+                                <span class="tech-badge">Axios</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Keys Required (.env file)</h6>
+                            <div class="code-box">
+                                ANTHROPIC_API_KEY=sk-ant-xxx<br>
+                                # OR<br>
+                                OPENAI_API_KEY=sk-xxx<br>
+                                <br>
+                                OPENWEATHER_API_KEY=your_key_here
+                            </div>
+                            <p class="mb-0 mt-2 small">⚠️ Never commit your .env file!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>☐ API keys obtained and in .env</li>
+                        <li>☐ Both tool HTML files created</li>
+                        <li>☐ API integration working</li>
+                        <li>☐ Loading states implemented</li>
+                        <li>☐ Error handling for API failures</li>
+                        <li>☐ Responsive design</li>
+                        <li>☐ Tested all features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 3 -->
+        <div class="student-card student3" id="student3">
+            <div class="student-header">
+                <div class="student-number">3</div>
+                <h2 class="mb-2">Student 3: Local Storage & File Processing</h2>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3003
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">✅</div>
+                            <h5>Tool 5: Todo List Manager</h5>
+                            <p>Full-featured task manager with persistence</p>
+                            <p><strong>File:</strong> <code>public/todo.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Add new task input + button</li>
+                                <li>Task list display</li>
+                                <li>Mark complete/incomplete (checkbox)</li>
+                                <li>Edit task inline</li>
+                                <li>Delete task button</li>
+                                <li>Filter tabs (All, Active, Completed)</li>
+                                <li>Task counter</li>
+                                <li>Clear completed button</li>
+                                <li>Priority levels (high, medium, low)</li>
+                                <li>localStorage persistence</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">localStorage</span>
+                                <span class="tech-badge">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">📊</div>
+                            <h5>Tool 6: CSV to JSON Converter</h5>
+                            <p>Upload CSV files and convert to JSON</p>
+                            <p><strong>File:</strong> <code>public/csv-converter.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Drag-and-drop file upload</li>
+                                <li>File browse button</li>
+                                <li>File size validation (max 5MB)</li>
+                                <li>Parse CSV to JSON</li>
+                                <li>Preview first 10 rows</li>
+                                <li>Download JSON button</li>
+                                <li>Pretty-print JSON option</li>
+                                <li>Sample CSV download</li>
+                                <li>Error handling for malformed CSV</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Multer</span>
+                                <span class="tech-badge">csv-parser</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npm install express cors dotenv multer csv-parser
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>☐ Todo List fully functional</li>
+                        <li>☐ localStorage working (data persists)</li>
+                        <li>☐ CSV upload working</li>
+                        <li>☐ CSV parsing working</li>
+                        <li>☐ JSON download working</li>
+                        <li>☐ Responsive design</li>
+                        <li>☐ Tested all features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 4 -->
+        <div class="student-card student4" id="student4">
+            <div class="student-header">
+                <div class="student-number">4</div>
+                <h2 class="mb-2">Student 4: DOM Manipulation & Real-time</h2>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3004
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">🎯</div>
+                            <h5>Tool 7: Quiz Builder & Player</h5>
+                            <p>Create and take quizzes with dynamic scoring</p>
+                            <p><strong>File:</strong> <code>public/quiz.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Two tabs: Build Quiz / Take Quiz</li>
+                                <li><strong>Build Mode:</strong></li>
+                                <li>- Quiz title input</li>
+                                <li>- Add/remove questions dynamically</li>
+                                <li>- 4 answer options per question</li>
+                                <li>- Mark correct answer</li>
+                                <li>- Save quiz to localStorage</li>
+                                <li><strong>Play Mode:</strong></li>
+                                <li>- Select saved quiz</li>
+                                <li>- Progress bar</li>
+                                <li>- Timer (optional)</li>
+                                <li>- Live score calculation</li>
+                                <li>- Results page with correct answers</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">DOM API</span>
+                                <span class="tech-badge">localStorage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">📝</div>
+                            <h5>Tool 8: Live Markdown Previewer</h5>
+                            <p>Real-time markdown to HTML conversion</p>
+                            <p><strong>File:</strong> <code>public/markdown.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Split-pane layout (editor | preview)</li>
+                                <li>Markdown editor (textarea)</li>
+                                <li>Real-time HTML preview</li>
+                                <li>Support: Headers, Lists, Links, Images, Code</li>
+                                <li>Syntax highlighting for code blocks</li>
+                                <li>Sample markdown template</li>
+                                <li>Download as HTML button</li>
+                                <li>Dark mode toggle (optional)</li>
+                                <li>Markdown cheat sheet</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Marked.js</span>
+                                <span class="tech-badge">Split-pane</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-code-slash"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">Installation Commands</h6>
+                            <div class="code-box">
+                                npm install express cors dotenv marked
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>☐ Quiz builder working</li>
+                        <li>☐ Quiz player working</li>
+                        <li>☐ Dynamic question add/remove</li>
+                        <li>☐ Scoring system accurate</li>
+                        <li>☐ Markdown preview real-time</li>
+                        <li>☐ All markdown syntax supported</li>
+                        <li>☐ Responsive design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 5 -->
+        <div class="student-card student5" id="student5">
+            <div class="student-header">
+                <div class="student-number">5</div>
+                <h2 class="mb-2">Student 5: Text Processing & Security</h2>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3005
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">📄</div>
+                            <h5>Tool 9: AI Text Summarizer</h5>
+                            <p>Summarize long texts using Claude or OpenAI</p>
+                            <p><strong>File:</strong> <code>public/summarizer.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Large textarea for input text</li>
+                                <li>Word count display (live)</li>
+                                <li>Summary length selector (short, medium, long)</li>
+                                <li>Summarize button</li>
+                                <li>Loading animation</li>
+                                <li>Display formatted summary</li>
+                                <li>Key points highlighting</li>
+                                <li>Copy to clipboard button</li>
+                                <li>Export as TXT/PDF</li>
+                                <li>Error handling for API failures</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Anthropic API</span>
+                                <span class="tech-badge">OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-box">
+                            <div class="tool-icon">🔒</div>
+                            <h5>Tool 10: Password Generator</h5>
+                            <p>Generate secure passwords with customization</p>
+                            <p><strong>File:</strong> <code>public/password.html</code></p>
+
+                            <h6 class="mt-3 mb-2">Requirements:</h6>
+                            <ul class="requirement-list">
+                                <li>Length slider (8-32 characters)</li>
+                                <li>Checkboxes: Uppercase, Lowercase, Numbers, Symbols</li>
+                                <li>Exclude similar characters option</li>
+                                <li>Generate button</li>
+                                <li>Display generated password</li>
+                                <li>Strength meter (weak, medium, strong)</li>
+                                <li>Copy to clipboard button</li>
+                                <li>Visual feedback on copy</li>
+                                <li>Password history (last 5)</li>
+                                <li>Generate multiple at once option</li>
+                            </ul>
+
+                            <h6 class="mt-3 mb-2">Tech Stack:</h6>
+                            <div>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Crypto API</span>
+                                <span class="tech-badge">Clipboard API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="bi bi-key-fill"></i>
+                        <div>
+                            <h6 class="fw-bold mb-2">API Key Required (.env file)</h6>
+                            <div class="code-box">
+                                ANTHROPIC_API_KEY=sk-ant-xxx<br>
+                                # OR<br>
+                                OPENAI_API_KEY=sk-xxx
+                            </div>
+                            <p class="mb-0 mt-2 small">⚠️ Never commit your .env file!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-check2-square me-2"></i>Completion Checklist</h6>
+                    <ul class="list-unstyled">
+                        <li>☐ Text summarizer API working</li>
+                        <li>☐ Summary length options working</li>
+                        <li>☐ Password generator working</li>
+                        <li>☐ Customization options working</li>
+                        <li>☐ Strength meter accurate</li>
+                        <li>☐ Copy to clipboard working</li>
+                        <li>☐ Responsive design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

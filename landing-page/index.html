@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Tool Project Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy-dark: #0a1628;
+            --navy: #1a2744;
+            --orange: #ff6b35;
+            --purple: #6c5ce7;
+            --green: #00b894;
+            --blue: #0984e3;
+            --red: #d63031;
+            --yellow: #fdcb6e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .header .project-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .student-header {
+            padding: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+        }
+
+        .student-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .student1 .student-header {
+            background: linear-gradient(135deg, var(--purple) 0%, #a29bfe 100%);
+        }
+
+        .student2 .student-header {
+            background: linear-gradient(135deg, var(--green) 0%, #55efc4 100%);
+        }
+
+        .student3 .student-header {
+            background: linear-gradient(135deg, var(--blue) 0%, #74b9ff 100%);
+        }
+
+        .student4 .student-header {
+            background: linear-gradient(135deg, var(--red) 0%, #fab1a0 100%);
+        }
+
+        .student5 .student-header {
+            background: linear-gradient(135deg, var(--yellow) 0%, #ffeaa7 100%);
+        }
+
+        .student-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .port-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .student-body {
+            padding: 30px;
+        }
+
+        .tool-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .student1 .tool-card {
+            border-left-color: var(--purple);
+        }
+
+        .student1 .tool-card::before {
+            background: var(--purple);
+        }
+
+        .student2 .tool-card {
+            border-left-color: var(--green);
+        }
+
+        .student2 .tool-card::before {
+            background: var(--green);
+        }
+
+        .student3 .tool-card {
+            border-left-color: var(--blue);
+        }
+
+        .student3 .tool-card::before {
+            background: var(--blue);
+        }
+
+        .student4 .tool-card {
+            border-left-color: var(--red);
+        }
+
+        .student4 .tool-card::before {
+            background: var(--red);
+        }
+
+        .student5 .tool-card {
+            border-left-color: var(--yellow);
+        }
+
+        .student5 .tool-card::before {
+            background: var(--yellow);
+        }
+
+        .tool-card .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .tool-card h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .tool-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 25px;
+            background: white;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .student1 .tool-link {
+            color: var(--purple);
+        }
+
+        .student2 .tool-link {
+            color: var(--green);
+        }
+
+        .student3 .tool-link {
+            color: var(--blue);
+        }
+
+        .student4 .tool-link {
+            color: var(--red);
+        }
+
+        .student5 .tool-link {
+            color: var(--yellow);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.online {
+            background: #51cf66;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tech-badge {
+            background: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #666;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Added styles for Instructions Buttons */
+        .instructions-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+        }
+
+        .instructions-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .floating-instructions {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 25px rgba(255, 193, 7, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            animation: pulse-instructions 2s infinite;
+        }
+
+        .floating-instructions:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(255, 193, 7, 0.6);
+            color: white;
+        }
+
+        @keyframes pulse-instructions {
+
+            0%,
+            100% {
+                box-shadow: 0 5px 25px rgba(255, 193, 7, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 5px 35px rgba(255, 193, 7, 0.7);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .student-card {
+                margin-bottom: 30px;
+            }
+
+            .floating-instructions {
+                bottom: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="project-badge">
+                <i class="bi bi-code-square me-2"></i>GitHub Collaboration Project
+            </div>
+            <h1><i class="bi bi-tools me-3"></i>Multi-Tool Hub</h1>
+            <p class="subtitle">10 Web Tools · 5 Students · Endless Possibilities</p>
+            <!-- Instructions Button -->
+            <a href="../instructions.html" class="instructions-btn">
+                <i class="bi bi-book"></i>View Instructions
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Student 1: Web Scraping & File Processing -->
+        <div class="student-card student1">
+            <div class="student-header">
+                <div class="student-number">1</div>
+                <h3>Student 1: Web Scraping & File Processing</h3>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3001
+                    <span class="status-indicator" id="status-3001"></span>
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">🌐</div>
+                            <h5>Web Scraper</h5>
+                            <p>Extract titles, headings, and links from any website using Node.js and Cheerio</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Express</span>
+                                <span class="tech-badge">Cheerio</span>
+                                <span class="tech-badge">Axios</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3001/scraper" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">📱</div>
+                            <h5>QR Code Generator</h5>
+                            <p>Generate QR codes from text or URLs instantly. Download as PNG images</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">qrcode</span>
+                                <span class="tech-badge">Canvas</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3001/qrcode" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 2: AI & External API -->
+        <div class="student-card student2">
+            <div class="student-header">
+                <div class="student-number">2</div>
+                <h3>Student 2: AI & External APIs</h3>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3002
+                    <span class="status-indicator" id="status-3002"></span>
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">📚</div>
+                            <h5>AI Storybook Generator</h5>
+                            <p>Create unique stories using Claude or OpenAI. Input prompts, get creative narratives</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Anthropic API</span>
+                                <span class="tech-badge">OpenAI</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3002/storybook" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">🌤️</div>
+                            <h5>Weather Dashboard</h5>
+                            <p>Real-time weather data and 5-day forecasts using OpenWeatherMap API</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">OpenWeather API</span>
+                                <span class="tech-badge">Chart.js</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3002/weather" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 3: Local Storage & File Upload -->
+        <div class="student-card student3">
+            <div class="student-header">
+                <div class="student-number">3</div>
+                <h3>Student 3: Local Storage & File Processing</h3>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3003
+                    <span class="status-indicator" id="status-3003"></span>
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">✅</div>
+                            <h5>Todo List Manager</h5>
+                            <p>Full-featured task manager with add, edit, delete. Data persists via localStorage</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">localStorage</span>
+                                <span class="tech-badge">Bootstrap</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3003/todo" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">📊</div>
+                            <h5>CSV to JSON Converter</h5>
+                            <p>Upload CSV files, convert to JSON format, and download the result instantly</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Multer</span>
+                                <span class="tech-badge">csv-parser</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3003/csv-converter" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 4: DOM Manipulation & Real-time Interactivity -->
+        <div class="student-card student4">
+            <div class="student-header">
+                <div class="student-number">4</div>
+                <h3>Student 4: DOM Manipulation & Real-time</h3>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3004
+                    <span class="status-indicator" id="status-3004"></span>
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">🎯</div>
+                            <h5>Quiz Builder & Player</h5>
+                            <p>Create custom quizzes, take them, get instant scores with dynamic DOM manipulation</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">DOM API</span>
+                                <span class="tech-badge">localStorage</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3004/quiz" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">📝</div>
+                            <h5>Live Markdown Previewer</h5>
+                            <p>Type markdown on the left, see HTML preview on the right in real-time</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Marked.js</span>
+                                <span class="tech-badge">Split-pane</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3004/markdown" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student 5: Text Processing & Security -->
+        <div class="student-card student5">
+            <div class="student-header">
+                <div class="student-number">5</div>
+                <h3>Student 5: Text Processing & Security</h3>
+                <span class="port-badge">
+                    <i class="bi bi-hdd-network me-1"></i>Port 3005
+                    <span class="status-indicator" id="status-3005"></span>
+                </span>
+            </div>
+            <div class="student-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">📄</div>
+                            <h5>AI Text Summarizer</h5>
+                            <p>Paste long text, get AI-generated summaries using Anthropic or OpenAI APIs</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Anthropic API</span>
+                                <span class="tech-badge">OpenAI</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3005/summarizer" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">🔒</div>
+                            <h5>Password Generator</h5>
+                            <p>Generate secure passwords with customizable strength, copy to clipboard, strength meter
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Crypto API</span>
+                                <span class="tech-badge">Clipboard API</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="http://localhost:3005/password" class="tool-link" target="_blank">
+                                    <i class="bi bi-arrow-right-circle"></i> Launch Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Instructions Button -->
+    <a href="../instructions.html" class="floating-instructions">
+        <i class="bi bi-book-fill"></i>
+        <span>Student Instructions</span>
+    </a>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p><i class="bi bi-github me-2"></i>Multi-Tool Project · Class of 2026 · Built with ❤️ using Node.js</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Status Check Script -->
+    <script>
+        // Check server status for each port
+        const ports = [3001, 3002, 3003, 3004, 3005];
+
+        async function checkServerStatus(port) {
+            try {
+                const response = await fetch(`http://localhost:${port}/health`, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function updateStatusIndicators() {
+            for (const port of ports) {
+                const indicator = document.getElementById(`status-${port}`);
+                const isOnline = await checkServerStatus(port);
+
+                if (isOnline) {
+                    indicator.classList.add('online');
+                } else {
+                    indicator.classList.remove('online');
+                }
+            }
+        }
+
+        // Check status on load and every 10 seconds
+        updateStatusIndicators();
+        setInterval(updateStatusIndicators, 10000);
+    </script>
+</body>
+
+</html>
